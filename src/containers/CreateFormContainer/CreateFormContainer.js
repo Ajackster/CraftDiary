@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { onTitleChange, onDescriptionChange, onSavePress } from '../../redux/modules/Forms/FormScreenRedux';
 import FormScreen from '../../components/FormScreen';
 
-const FormScreenContainer = ({ onTitleChange, onDescriptionChange, onSavePress }) => {
+const CreateFormContainer = ({ onTitleChange, onDescriptionChange, onSavePress }) => {
   return (
     <FormScreen
       onTitleChange={onTitleChange}
@@ -28,4 +28,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormScreenContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateFormContainer);

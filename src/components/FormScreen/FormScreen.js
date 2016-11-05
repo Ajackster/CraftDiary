@@ -6,10 +6,12 @@ import {
   TextInput,
   Image,
   Animated,
-  StatusBar
+  StatusBar,
+  TouchableOpacity
 } from 'react-native';
 import Core from '../../styles/core';
 import Colors from '../../styles/colors';
+import BackButton from '../Button/BackButton';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const HEADER_MAX_HEIGHT = 120;
@@ -51,12 +53,24 @@ class FormScreen extends React.Component {
       <View style={{ flex: 1, backgroundColor: Colors.colorLightBackground }}>
         <StatusBar barStyle="light-content" />
         <Animated.View style={[ styles.header, { height: this.state.headerHeight }]}>
-          <Animated.View style={[ styles.headerCircle, { opacity: this.state.circleOpacity } ]}>
-            <Image
-              source={CIRCLE_LOGO}
-              style={{ width: 40, height: 40, marginTop: -5, marginRight: -5 }}
-              resizeMode="contain"
-            />
+          <Animated.View style={{ flex: 1, flexDirection: 'row', opacity: this.state.circleOpacity }}>
+            <View style={styles.headerSection}>
+              <BackButton onPress={this.props.onBackPress} />
+            </View>
+            <View style={styles.headerSection}>
+              <View style={styles.headerCircle}>
+                <Image
+                  source={CIRCLE_LOGO}
+                  style={{ width: 40, height: 40, marginTop: -5, marginRight: -5 }}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+            <View style={styles.headerSection}>
+              <TouchableOpacity onPress={this.props.onSavePress}>
+                <Text style={styles.saveButton}>Save</Text>
+              </TouchableOpacity>
+            </View>
           </Animated.View>
         </Animated.View>
         <KeyboardAwareScrollView>
@@ -98,9 +112,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15
   },
   header: {
-    justifyContent: 'center',
+    flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.colorPrimary
+  },
+  headerSection: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   headerCircle: {
     width: 70,
@@ -125,6 +144,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: 'white',
     ...Core.defaultText
+  },
+  saveButton: {
+    color: '#FFF',
+    fontSize: 20
   }
 });
 
