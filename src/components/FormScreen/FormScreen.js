@@ -68,10 +68,11 @@ class FormScreen extends React.Component {
             </View>
             <View style={styles.headerSection}>
               <TouchableOpacity onPress={this.props.onSavePress}>
-                <Text style={styles.saveButton}>Save</Text>
+                <Text style={styles.createButton}>Save</Text>
               </TouchableOpacity>
             </View>
           </Animated.View>
+          <View style={styles.bottomBar} />
         </Animated.View>
         <KeyboardAwareScrollView>
           <View style={styles.formScreenContainer}>
@@ -145,9 +146,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     ...Core.defaultText
   },
-  saveButton: {
+  createButton: {
     color: '#FFF',
     fontSize: 20
+  },
+  bottomBar: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: 5,
+    backgroundColor: Colors.colorSecondary
   }
 });
 
