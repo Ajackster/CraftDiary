@@ -10,7 +10,7 @@ import ImageHeader from 'react-native-image-header';
 import Core from '../../styles/core';
 import Colors from '../../styles/colors';
 
-const FormList = ({ backgroundImage, onCreatePress }) => {
+const FormList = ({ backgroundImage, onCreatePress, formItems }) => {
   return (
     <View style={{ flex: 1 }}>
       <ImageHeader
@@ -23,7 +23,12 @@ const FormList = ({ backgroundImage, onCreatePress }) => {
         headerChildren={<HeaderChildren onCreatePress={onCreatePress} />}
       >
         <View style={{ flex: 1 }}>
-
+          {formItems.map((item, i) => (
+            <View key={i} style={{ height: 30, width: 300, borderBottomWidth: 2, borderBottomColor: 'red' }}>
+              <Text>{item.title}</Text>
+              <Text>{item.description}</Text>
+            </View>
+          ))}
         </View>
       </ImageHeader>
     </View>
@@ -86,7 +91,8 @@ const styles = StyleSheet.create({
 
 FormList.propTypes = {
   backgroundImage: React.PropTypes.number,
-  onCreatePress: React.PropTypes.func
+  onCreatePress: React.PropTypes.func,
+  formItems: React.PropTypes.array
 };
 
 FormList.defaultProps = {

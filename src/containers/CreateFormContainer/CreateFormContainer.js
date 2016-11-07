@@ -4,15 +4,25 @@ import { connect } from 'react-redux';
 import { onTitleChange, onDescriptionChange, onSavePress } from '../../redux/modules/Forms/FormScreenRedux';
 import FormScreen from '../../components/FormScreen';
 
-const CreateFormContainer = ({ onTitleChange, onDescriptionChange, onSavePress }) => {
-  return (
-    <FormScreen
-      onTitleChange={onTitleChange}
-      onDescriptionChange={onDescriptionChange}
-      onSavePress={onSavePress}
-    />
-  )
-};
+class CreateFormContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this._onBackPress = this._onBackPress.bind(this);
+  }
+  _onBackPress() {
+    this.props.navigator.pop();
+  }
+  render() {
+    return (
+      <FormScreen
+        onTitleChange={this.props.onTitleChange}
+        onDescriptionChange={this.props.onDescriptionChange}
+        onSavePress={this.props.onSavePress}
+        onBackPress={this._onBackPress}
+      />
+    )
+  }
+}
 
 const mapStateToProps = (state) => {
   return {

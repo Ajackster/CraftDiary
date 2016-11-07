@@ -4,8 +4,6 @@ const ON_TITLE_CHANGE = 'ON_TITLE_CHANGE';
 const ON_DESCRIPTION_CHANGE = 'ON_DESCRIPTION_CHANGE';
 const ON_SAVE_PRESS = 'ON_SAVE_PRESS';
 
-const formItems = AsyncStorage.getItem('formItems');
-
 export const onTitleChange = (title) => {
   return {
     type: 'ON_TITLE_CHANGE',
@@ -45,12 +43,6 @@ export const FormScreen = (state = {}, action) => {
         ...state,
         id: new Date().getTime()
       };
-      AsyncStorage.setItem(`formItems`, formItems.then((err, forms) => {
-        forms.map((form) => {
-          if (form.id !== newForm.id) return form;
-          return newForm;
-        })
-      })).done();
       return newForm;
     }
     default: return state;

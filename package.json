@@ -11,6 +11,7 @@
     "react-native": "0.36.1",
     "react-native-image-header": "^1.0.1",
     "react-native-keyboard-aware-scroll-view": "^0.2.1",
+    "react-native-sqlite-storage": "^3.1.2",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0"
   },
