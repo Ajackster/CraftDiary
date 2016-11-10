@@ -2,6 +2,7 @@ import { addFormItem } from '../../../database/SQLite';
 
 const ON_TITLE_CHANGE = 'ON_TITLE_CHANGE';
 const ON_DESCRIPTION_CHANGE = 'ON_DESCRIPTION_CHANGE';
+const ON_FORM_SCREEN_LOAD = 'ON_FORM_SCREEN_LOAD';
 const ON_SAVE_PRESS = 'ON_SAVE_PRESS';
 
 export const onTitleChange = (title) => {
@@ -35,6 +36,12 @@ export const FormScreen = (state = {}, action) => {
     case ON_DESCRIPTION_CHANGE: {
       return {
         ...state,
+        description: action.description
+      }
+    }
+    case ON_FORM_SCREEN_LOAD: {
+      return {
+        title: action.title,
         description: action.description
       }
     }

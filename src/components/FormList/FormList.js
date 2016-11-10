@@ -24,16 +24,7 @@ const FormList = ({ backgroundImage, onCreatePress, formItems, onFormItemPress }
         titleTranslateY={0}
         headerChildren={<HeaderChildren onCreatePress={onCreatePress} />}
       >
-        <View style={{ flex: 1 }}>
-          {formItems.map((item, i) => (
-            <Touchable key={i} onPress={() => onFormItemPress(item.id)}>
-              <View style={styles.listItem}>
-                <Text style={{ fontSize: 20 }}>{item.title}</Text>
-                <Text style={[ Core.miniText, { color: Colors.colorDescriptionText } ]}>{item.description}</Text>
-              </View>
-            </Touchable>
-          ))}
-        </View>
+        <FormListBody formItems={formItems} onFormItemPress={onFormItemPress} />
       </ImageHeader>
     </View>
   )
@@ -57,6 +48,34 @@ const HeaderChildren = ({ onCreatePress }) => (
     </TouchableOpacity>
   </View>
 );
+const FormListBody = ({ formItems, onFormItemPress }) => {
+  if (formItems.length > 0) {
+    return (
+      <View style={{flex: 1}}>
+        {formItems.map((item, i) => (
+          <Touchable key={i} onPress={() => onFormItemPress(item.id)}>
+            <View style={styles.listItem}>
+              <Text style={{fontSize: 20}}>{item.title}</Text>
+              <Text style={[Core.miniText, {color: Colors.colorDescriptionText}]}>{item.description}</Text>
+            </View>
+          </Touchable>
+        ))}
+      </View>
+    )
+  } else {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: 40 }}>
+        <Text style={{ color: Colors.colorPrimary, fontSize: 24, textAlign: 'center' }}>
+          Start by clicking 'Create' and fill out the form!
+        </Text>
+        <Image
+          source={require('./giphy.gif')}
+          style={{ width: 200, height: 200, marginTop: 15 }}
+        />
+      </View>
+    )
+  }
+};
 
 const styles = StyleSheet.create({
   header: {
@@ -104,11 +123,13 @@ const styles = StyleSheet.create({
 FormList.propTypes = {
   backgroundImage: React.PropTypes.number,
   onCreatePress: React.PropTypes.func,
+  onFormItemPress: React.PropTypes.func,
   formItems: React.PropTypes.array
 };
 
 FormList.defaultProps = {
-  backgroundImage: require('./img/defaultBackground.png')
+  backgroundImage: require('./img/defaultBackground.png'),
+  formItems: []
 };
 
 export default FormList;

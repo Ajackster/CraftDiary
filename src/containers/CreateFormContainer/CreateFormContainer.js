@@ -13,7 +13,7 @@ class CreateFormContainer extends React.Component {
   _onSavePress() {
     this.props.onSavePress();
     this.props.navigator.push({
-      id: 'homeScreen'
+      id: 'home'
     })
   }
   _onBackPress() {
@@ -24,7 +24,7 @@ class CreateFormContainer extends React.Component {
       <FormScreen
         onTitleChange={this.props.onTitleChange}
         onDescriptionChange={this.props.onDescriptionChange}
-        onSavePress={this.props.onSavePress}
+        onSavePress={this._onSavePress}
         onBackPress={this._onBackPress}
       />
     )
