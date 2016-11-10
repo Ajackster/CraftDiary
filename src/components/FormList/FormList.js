@@ -4,13 +4,15 @@ import {
   Text,
   Image,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableHighlight
 } from 'react-native';
 import ImageHeader from 'react-native-image-header';
 import Core from '../../styles/core';
 import Colors from '../../styles/colors';
+import Touchable from '../Touchable';
 
-const FormList = ({ backgroundImage, onCreatePress, formItems }) => {
+const FormList = ({ backgroundImage, onCreatePress, formItems, onFormItemPress }) => {
   return (
     <View style={{ flex: 1 }}>
       <ImageHeader
@@ -24,10 +26,12 @@ const FormList = ({ backgroundImage, onCreatePress, formItems }) => {
       >
         <View style={{ flex: 1 }}>
           {formItems.map((item, i) => (
-            <View key={i} style={{ height: 30, width: 300, borderBottomWidth: 2, borderBottomColor: 'red' }}>
-              <Text>{item.title}</Text>
-              <Text>{item.description}</Text>
-            </View>
+            <Touchable key={i} onPress={() => onFormItemPress(item.id)}>
+              <View style={styles.listItem}>
+                <Text style={{ fontSize: 20 }}>{item.title}</Text>
+                <Text style={[ Core.miniText, { color: Colors.colorDescriptionText } ]}>{item.description}</Text>
+              </View>
+            </Touchable>
           ))}
         </View>
       </ImageHeader>
@@ -86,6 +90,14 @@ const styles = StyleSheet.create({
     bottom: 0,
     height: 5,
     backgroundColor: Colors.colorSecondary
+  },
+  listItem: {
+    padding: 15,
+    width: null,
+    borderBottomWidth: 1,
+    borderBottomColor: '#CCC',
+    justifyContent: 'center',
+    backgroundColor: '#FFF'
   }
 });
 
