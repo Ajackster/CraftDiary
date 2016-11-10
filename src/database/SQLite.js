@@ -23,7 +23,7 @@ let closeCallBack = () => {
 };
 
 let populateDatabase = (db) => {
-  db.executeSql('create table if not exists form_items (id integer primary key, title text, description text)');
+  db.executeSql('CREATE TABLE IF NOT EXISTS form_items (id integer primary key, title text, description text);');
 };
 
 export const initDatabase = () => {
@@ -41,13 +41,15 @@ export const closeDatabase = () => {
 };
 
 export const addFormItem = (title, description) => {
-  db.executeSql(`INSERT INTO form_items (title, description) VALUES (${title}, ${description});`)
+  db.executeSql(`INSERT INTO form_items (title, description) VALUES ("${title}", "${description}");`, []);
 };
 
-export const getFormItems = () => {
-  db.executeSql('SELECT * FROM form_items', (db, res) => {
-    return res.rows.item.map((item) => {
-      return { title: item.title, description: item.description }
-    })
-  })
+export const getFormItems = (dispatch) => {
+  var formItems = [];
+  db.executeSql('SELECT * FROM form_items;', [], (res) => {
+    for (var i = 0; i < res.rows.length; i++) {
+      formItems.push(res.rows.item(i));
+    }
+    return dispatch({ type: 'LOAD_FORM_ITEMS', formItems: formItems })
+  });
 };

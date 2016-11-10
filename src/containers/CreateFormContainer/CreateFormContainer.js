@@ -7,7 +7,11 @@ import FormScreen from '../../components/FormScreen';
 class CreateFormContainer extends React.Component {
   constructor(props) {
     super(props);
+    this._onSavePress = this._onSavePress.bind(this);
     this._onBackPress = this._onBackPress.bind(this);
+  }
+  _onSavePress() {
+    this.props.onSavePress();
   }
   _onBackPress() {
     this.props.navigator.pop();

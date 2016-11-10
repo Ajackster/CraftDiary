@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Navigator } from 'react-native';
+import { initDatabase, closeDatabase } from './database/SQLite';
 
 import CreateForm from './containers/CreateFormContainer';
 import HomeScreen from './containers/HomeScreenListContainer';
@@ -8,6 +9,12 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this._renderScene = this._renderScene.bind(this);
+  }
+  componentWillMount() {
+    initDatabase();
+  }
+  componentWillUnmount() {
+    closeDatabase();
   }
   _renderScene(route, navigator) {
     switch(route.id) {

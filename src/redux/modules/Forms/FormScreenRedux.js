@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native';
+import { addFormItem } from '../../../database/SQLite';
 
 const ON_TITLE_CHANGE = 'ON_TITLE_CHANGE';
 const ON_DESCRIPTION_CHANGE = 'ON_DESCRIPTION_CHANGE';
@@ -39,11 +39,8 @@ export const FormScreen = (state = {}, action) => {
       }
     }
     case ON_SAVE_PRESS: {
-      let newForm = {
-        ...state,
-        id: new Date().getTime()
-      };
-      return newForm;
+      addFormItem(state.title, state.description);
+      return {};
     }
     default: return state;
   }

@@ -85,10 +85,14 @@ class FormScreen extends React.Component {
                 onBlur={this._onInputBlur}
                 underlineColorAndroid="rgba(0, 0, 0, 0)"
                 value={this.props.title}
+                blurOnSubmit
+                onSubmitEditing={() => this.refs['descriptionInput'].focus()}
+                returnKeyType="next"
               />
             </View>
             <View style={[ Core.shadow, { marginBottom: 15 } ]}>
               <TextInput
+                ref="descriptionInput"
                 placeholder="Enter a description"
                 multiline
                 style={styles.descriptionInput}
