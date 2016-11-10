@@ -1,17 +1,18 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { onTitleChange, onDescriptionChange, onSavePress } from '../../redux/modules/Forms/FormScreenRedux';
+import { onTitleChange, onDescriptionChange, onEditSavePress } from '../../redux/modules/Forms/FormScreenRedux';
 import FormScreen from '../../components/FormScreen';
 
-class CreateFormContainer extends React.Component {
+class EditFormContainer extends React.Component {
   constructor(props) {
     super(props);
     this._onSavePress = this._onSavePress.bind(this);
     this._onBackPress = this._onBackPress.bind(this);
   }
   _onSavePress() {
-    this.props.onSavePress();
+    console.log('hit');
+    this.props.onEditSavePress();
     this.props.navigator.push({
       id: 'home'
     })
@@ -43,8 +44,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators ({
     onTitleChange: onTitleChange,
     onDescriptionChange: onDescriptionChange,
-    onSavePress: onSavePress
+    onEditSavePress: onEditSavePress
   }, dispatch)
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateFormContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(EditFormContainer);

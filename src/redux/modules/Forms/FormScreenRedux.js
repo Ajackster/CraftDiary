@@ -4,11 +4,17 @@ import { loadFormItems } from '../HomeScreenList/HomeScreenList';
 const ON_TITLE_CHANGE = 'ON_TITLE_CHANGE';
 const ON_DESCRIPTION_CHANGE = 'ON_DESCRIPTION_CHANGE';
 const LOAD_FORM_SCREEN = 'LOAD_FORM_SCREEN';
-const ON_SAVE_PRESS = 'ON_SAVE_PRESS';
+const ON_CREATE_SAVE_PRESS = 'ON_CREATE_SAVE_PRESS';
+const ON_EDIT_SAVE_PRESS = 'ON_EDIT_SAVE_PRESS';
 
 export const addFormItem = (title, description) => {
   const insertQuery = `INSERT INTO form_items (title, description) VALUES ("${title}", "${description}");`;
   db.executeSql(insertQuery, [], () => loadFormItems());
+};
+
+export const updateFormItem = (title, description, id) => {
+  const updateQuery = `UPDATE form_items SET title='${title}', description='${description}' WHERE id='${id}'`;
+  db.executeSql(updateQuery, [], () => loadFormItems());
 };
 
 export const loadFormScreen = (dispatch, id) => {
@@ -32,9 +38,15 @@ export const onDescriptionChange = (description) => {
   }
 };
 
-export const onSavePress = () => {
+export const onCreateSavePress = () => {
   return {
-    type: 'ON_SAVE_PRESS'
+    type: 'ON_CREATE_SAVE_PRESS'
+  }
+};
+
+export const onEditSavePress = () => {
+  return {
+    type: 'ON_EDIT_SAVE_PRESS'
   }
 };
 
@@ -54,13 +66,18 @@ export const FormScreen = (state = {}, action) => {
     }
     case LOAD_FORM_SCREEN: {
       return {
+        id: action.item.id,
         title: action.item.title,
         description: action.item.description
       }
     }
-    case ON_SAVE_PRESS: {
+    case ON_CREATE_SAVE_PRESS: {
       addFormItem(state.title, state.description);
       return {};
+    }
+    case ON_EDIT_SAVE_PRESS: {
+      updateFormItem(state.title, state.description, state.id);
+      return {}
     }
     default: return state;
   }

@@ -53,7 +53,13 @@ const FormListBody = ({ formItems, onFormItemPress }) => {
     return (
       <View style={{flex: 1}}>
         {formItems.map((item, i) => (
-          <FormListItem onPress={() => onFormItemPress(item.id)} title={item.title} description={item.description} />
+          <FormListItem
+            key={i}
+            onPress={() => onFormItemPress(item.id)}
+            title={item.title}
+            description={item.description}
+            created={item.created}
+          />
         ))}
       </View>
     )
@@ -104,14 +110,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     height: 5,
     backgroundColor: Colors.colorSecondary
-  },
-  listItem: {
-    padding: 15,
-    width: null,
-    borderBottomWidth: 1,
-    borderBottomColor: '#CCC',
-    justifyContent: 'center',
-    backgroundColor: '#FFF'
   }
 });
 

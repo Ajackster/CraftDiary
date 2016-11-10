@@ -168,6 +168,7 @@ FormScreen.propTypes = {
   onTitleChange: React.PropTypes.func,
   onDescriptionChange: React.PropTypes.func,
   onBackPress: React.PropTypes.func,
+  onSavePress: React.PropTypes.func,
   title: React.PropTypes.string,
   description: React.PropTypes.string
 };
