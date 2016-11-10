@@ -3,12 +3,19 @@ import { loadFormItems } from '../HomeScreenList/HomeScreenList';
 
 const ON_TITLE_CHANGE = 'ON_TITLE_CHANGE';
 const ON_DESCRIPTION_CHANGE = 'ON_DESCRIPTION_CHANGE';
-const ON_FORM_SCREEN_LOAD = 'ON_FORM_SCREEN_LOAD';
+const LOAD_FORM_SCREEN = 'LOAD_FORM_SCREEN';
 const ON_SAVE_PRESS = 'ON_SAVE_PRESS';
 
 export const addFormItem = (title, description) => {
   const insertQuery = `INSERT INTO form_items (title, description) VALUES ("${title}", "${description}");`;
   db.executeSql(insertQuery, [], () => loadFormItems());
+};
+
+export const loadFormScreen = (dispatch, id) => {
+  db.executeSql(`SELECT * FROM form_items WHERE id = ${id}`, [], (res) => {
+    const item = res.rows.item(0);
+    return dispatch({ type: LOAD_FORM_SCREEN, item: item })
+  })
 };
 
 export const onTitleChange = (title) => {
@@ -45,10 +52,10 @@ export const FormScreen = (state = {}, action) => {
         description: action.description
       }
     }
-    case ON_FORM_SCREEN_LOAD: {
+    case LOAD_FORM_SCREEN: {
       return {
-        title: action.title,
-        description: action.description
+        title: action.item.title,
+        description: action.item.description
       }
     }
     case ON_SAVE_PRESS: {

@@ -4,6 +4,7 @@ import { initDatabase, closeDatabase } from './database/SQLite';
 
 import CreateForm from './containers/CreateFormContainer';
 import HomeScreen from './containers/HomeScreenListContainer';
+import EditForm from './containers/EditFormContainer';
 
 class Main extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class Main extends React.Component {
     switch(route.id) {
       case 'home': return <HomeScreen navigator={navigator} />;
       case 'create': return <CreateForm navigator={navigator} />;
+      case 'edit': return <EditForm navigator={navigator} />;
     }
   }
   render() {
