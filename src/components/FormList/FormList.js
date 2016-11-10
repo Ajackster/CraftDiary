@@ -4,13 +4,12 @@ import {
   Text,
   Image,
   StyleSheet,
-  TouchableOpacity,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native';
 import ImageHeader from 'react-native-image-header';
 import Core from '../../styles/core';
 import Colors from '../../styles/colors';
-import Touchable from '../Touchable';
+import FormListItem from './FormListItem';
 
 const FormList = ({ backgroundImage, onCreatePress, formItems, onFormItemPress }) => {
   return (
@@ -48,17 +47,13 @@ const HeaderChildren = ({ onCreatePress }) => (
     </TouchableOpacity>
   </View>
 );
+
 const FormListBody = ({ formItems, onFormItemPress }) => {
   if (formItems.length > 0) {
     return (
       <View style={{flex: 1}}>
         {formItems.map((item, i) => (
-          <Touchable key={i} onPress={() => onFormItemPress(item.id)}>
-            <View style={styles.listItem}>
-              <Text style={{fontSize: 20}}>{item.title}</Text>
-              <Text style={[Core.miniText, {color: Colors.colorDescriptionText}]}>{item.description}</Text>
-            </View>
-          </Touchable>
+          <FormListItem onPress={() => onFormItemPress(item.id)} title={item.title} description={item.description} />
         ))}
       </View>
     )
@@ -69,7 +64,7 @@ const FormListBody = ({ formItems, onFormItemPress }) => {
           Start by clicking 'Create' and fill out the form!
         </Text>
         <Image
-          source={require('./giphy.gif')}
+          source={require('./img/giphy.gif')}
           style={{ width: 200, height: 200, marginTop: 15 }}
         />
       </View>

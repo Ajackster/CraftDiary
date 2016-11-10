@@ -167,6 +167,7 @@ const styles = StyleSheet.create({
 FormScreen.propTypes = {
   onTitleChange: React.PropTypes.func,
   onDescriptionChange: React.PropTypes.func,
+  onBackPress: React.PropTypes.func,
   title: React.PropTypes.string,
   description: React.PropTypes.string
 };

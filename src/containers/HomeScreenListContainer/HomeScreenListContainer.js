@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { loadFormItems } from '../../redux/modules/HomeScreenList/HomeScreenList';
 import { loadFormScreen } from '../../redux/modules/Forms/FormScreenRedux';
 import FormList from '../../components/FormList';
