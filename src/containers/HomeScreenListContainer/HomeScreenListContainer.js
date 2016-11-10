@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getFormItems } from '../../database/SQLite';
+import { loadFormItems } from '../../redux/modules/HomeScreenList/HomeScreenList';
 import FormList from '../../components/FormList';
 
 class HomeScreenListContainer extends React.Component {
@@ -8,8 +8,8 @@ class HomeScreenListContainer extends React.Component {
     super(props);
     this._onCreatePress = this._onCreatePress.bind(this);
   }
-  componentDidMount() {
-    this.props.getFormItems();
+  componentWillMount() {
+    this.props.loadFormItems();
   }
   _onCreatePress() {
     this.props.navigator.push({
@@ -34,7 +34,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getFormItems: () => getFormItems(dispatch)
+    loadFormItems: () => loadFormItems(dispatch)
   }
 };
 

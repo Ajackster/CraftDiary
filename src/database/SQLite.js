@@ -40,17 +40,3 @@ export const closeDatabase = () => {
     console.log('Database was not opened');
   }
 };
-
-export const addFormItem = (title, description) => {
-  db.executeSql(`INSERT INTO form_items (title, description) VALUES ("${title}", "${description}");`, []);
-};
-
-export const getFormItems = (dispatch) => {
-  var formItems = [];
-  db.executeSql('SELECT * FROM form_items;', [], (res) => {
-    for (var i = 0; i < res.rows.length; i++) {
-      formItems.push(res.rows.item(i));
-    }
-    return dispatch({ type: 'LOAD_FORM_ITEMS', formItems: formItems })
-  });
-};

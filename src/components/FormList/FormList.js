@@ -128,8 +128,7 @@ FormList.propTypes = {
 };
 
 FormList.defaultProps = {
-  backgroundImage: require('./img/defaultBackground.png'),
-  formItems: []
+  backgroundImage: require('./img/defaultBackground.png')
 };
 
 export default FormList;

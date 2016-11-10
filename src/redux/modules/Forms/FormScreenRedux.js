@@ -1,9 +1,15 @@
-import { addFormItem } from '../../../database/SQLite';
+import { db } from '../../../database/SQLite';
+import { loadFormItems } from '../HomeScreenList/HomeScreenList';
 
 const ON_TITLE_CHANGE = 'ON_TITLE_CHANGE';
 const ON_DESCRIPTION_CHANGE = 'ON_DESCRIPTION_CHANGE';
 const ON_FORM_SCREEN_LOAD = 'ON_FORM_SCREEN_LOAD';
 const ON_SAVE_PRESS = 'ON_SAVE_PRESS';
+
+export const addFormItem = (title, description) => {
+  const insertQuery = `INSERT INTO form_items (title, description) VALUES ("${title}", "${description}");`;
+  db.executeSql(insertQuery, [], () => loadFormItems());
+};
 
 export const onTitleChange = (title) => {
   return {
