@@ -7,9 +7,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@exponent/react-native-action-sheet": "^0.2.3",
+    "moment": "^2.17.0",
     "react": "15.3.2",
     "react-native": "0.36.1",
     "react-native-image-header": "^1.0.1",
+    "react-native-image-picker": "^0.23.0",
     "react-native-keyboard-aware-scroll-view": "^0.2.1",
     "react-native-sqlite-storage": "^3.1.2",
     "react-redux": "^4.4.5",

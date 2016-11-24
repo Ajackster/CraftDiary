@@ -69,10 +69,6 @@ const FormListBody = ({ formItems, onFormItemPress }) => {
         <Text style={{ color: Colors.colorPrimary, fontSize: 24, textAlign: 'center' }}>
           Start by clicking 'Create' and fill out the form!
         </Text>
-        <Image
-          source={require('./img/giphy.gif')}
-          style={{ width: 200, height: 200, marginTop: 15 }}
-        />
       </View>
     )
   }

@@ -12,11 +12,17 @@ const FormListItem = ({ onPress, title, description, created }) => {
   return (
     <Touchable onPress={onPress}>
       <View style={styles.listItem}>
-        <View>
-          <Text style={{ fontSize: 20 }}>{title}</Text>
-          <Text style={[ Core.miniText, { color: Colors.colorDescriptionText } ]}>{description}</Text>
+        <View style={{ flex: 2.5 }}>
+          <Text style={{ fontSize: 20 }} numberOfLines={1} ellipsizeMode="middle">{title}</Text>
+          <Text style={[ Core.miniText, { color: Colors.colorDescriptionText } ]} numberOfLines={3}>{description}</Text>
         </View>
-        <Text>{created}</Text>
+        <View style={{ flex: 1 }}>
+          <View style={{ alignSelf: 'flex-end', justifyContent: 'center', width: 90, height: 30, borderRadius: 4, backgroundColor: Colors.colorPrimary }}>
+            <Text style={{ alignSelf: 'center', color: 'white', fontWeight: '500' }}>
+              {created}
+            </Text>
+          </View>
+        </View>
       </View>
     </Touchable>
   )
@@ -27,7 +33,7 @@ const styles = StyleSheet.create({
     padding: 15,
     width: null,
     borderBottomWidth: 1,
-    borderBottomColor: '#CCC',
+    borderBottomColor: Colors.colorLightBackground,
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: '#FFF',

@@ -11,7 +11,6 @@ class EditFormContainer extends React.Component {
     this._onBackPress = this._onBackPress.bind(this);
   }
   _onSavePress() {
-    console.log('hit');
     this.props.onEditSavePress();
     this.props.navigator.push({
       id: 'home'

@@ -25,6 +25,7 @@
 		00B660C92F2F47C48D079D70 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FB01D51598F4FACAD34EFFA /* libRCTActionSheet.a */; };
 		8F7CB0EF42C942D98EA2382E /* libSQLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 963860831B7B4BE0BBB9FEBC /* libSQLite.a */; };
 		7CBEDA051A2D47F7A460D982 /* libsqlite3.0.tbd in Resources */ = {isa = PBXBuildFile; fileRef = C1707E3708E740C2AA3D23A6 /* libsqlite3.0.tbd */; };
+		0BA6A278EBB64EA5B9BDF026 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4174AFEE843A4EE99A1215FF /* libRNImagePicker.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,8 @@
 		86489E7B110E44C79DCCBE51 /* SQLite.xcodeproj */ = {isa = PBXFileReference; name = "SQLite.xcodeproj"; path = "../node_modules/react-native-sqlite-storage/src/ios/SQLite.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		963860831B7B4BE0BBB9FEBC /* libSQLite.a */ = {isa = PBXFileReference; name = "libSQLite.a"; path = "libSQLite.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		C1707E3708E740C2AA3D23A6 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; name = "libsqlite3.0.tbd"; path = "usr/lib/libsqlite3.0.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		963AAF3D38DF48CB8EE68C51 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; name = "RNImagePicker.xcodeproj"; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		4174AFEE843A4EE99A1215FF /* libRNImagePicker.a */ = {isa = PBXFileReference; name = "libRNImagePicker.a"; path = "libRNImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,7 @@
 				00B660C92F2F47C48D079D70 /* libRCTActionSheet.a in Frameworks */,
 				8F7CB0EF42C942D98EA2382E /* libSQLite.a in Frameworks */,
 				7CBEDA051A2D47F7A460D982 /* libsqlite3.0.tbd in Resources */,
+				0BA6A278EBB64EA5B9BDF026 /* libRNImagePicker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +290,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				60898DB88AD94658B08F509D /* ReactNativeHeader.xcodeproj */,
 				86489E7B110E44C79DCCBE51 /* SQLite.xcodeproj */,
+				963AAF3D38DF48CB8EE68C51 /* RNImagePicker.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -612,6 +617,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -630,6 +636,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Release;
@@ -646,6 +653,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-image-header/ios/ReactNativeHeader/**",
 					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 				);
 				INFOPLIST_FILE = "CrochetApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -670,6 +678,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-image-header/ios/ReactNativeHeader/**",
 					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 				);
 				INFOPLIST_FILE = "CrochetApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -723,6 +732,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-image-header/ios/ReactNativeHeader/**",
 					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -765,6 +775,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-image-header/ios/ReactNativeHeader/**",
 					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

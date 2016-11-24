@@ -7,15 +7,18 @@ import {
   Image,
   Animated,
   StatusBar,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native';
 import Core from '../../styles/core';
 import Colors from '../../styles/colors';
 import BackButton from '../Button/BackButton';
+import ImagePicker from 'react-native-image-picker';
+import Touchable from '../Touchable';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const HEADER_MAX_HEIGHT = 120;
-const ANIMATION_DURATION = 500;
+const ANIMATION_DURATION = 200;
 const CIRCLE_LOGO = require('./img/headerCircle.png');
 
 class FormScreen extends React.Component {
@@ -27,6 +30,7 @@ class FormScreen extends React.Component {
     };
     this._onInputFocus = this._onInputFocus.bind(this);
     this._onInputBlur = this._onInputBlur.bind(this);
+    this._showImagePicker = this._showImagePicker.bind(this);
   }
   _onInputFocus() {
     Animated.timing(this.state.headerHeight, {
@@ -47,6 +51,12 @@ class FormScreen extends React.Component {
       toValue: 1,
       duration: ANIMATION_DURATION
     }).start();
+  }
+  _showImagePicker() {
+    ImagePicker.showImagePicker(options, (res) => {
+      const source = { uri: 'data:image/jpg;base64,' + res.data, isStatic: true };
+
+    })
   }
   render() {
     return (
@@ -105,6 +115,11 @@ class FormScreen extends React.Component {
             </View>
           </View>
         </KeyboardAwareScrollView>
+        <Touchable>
+          <View>
+
+          </View>
+        </Touchable>
       </View>
     )
   }

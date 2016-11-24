@@ -6,9 +6,11 @@ const ON_DESCRIPTION_CHANGE = 'ON_DESCRIPTION_CHANGE';
 const LOAD_FORM_SCREEN = 'LOAD_FORM_SCREEN';
 const ON_CREATE_SAVE_PRESS = 'ON_CREATE_SAVE_PRESS';
 const ON_EDIT_SAVE_PRESS = 'ON_EDIT_SAVE_PRESS';
+const ON_ADD_PHOTO = 'ON_ADD_PHOTO';
 
 export const addFormItem = (title, description) => {
-  const insertQuery = `INSERT INTO form_items (title, description) VALUES ("${title}", "${description}");`;
+  let utc = new Date().toJSON().slice(0, 10);
+  const insertQuery = `INSERT INTO form_items (title, description, created) VALUES ("${title}", "${description}", "${utc}");`;
   db.executeSql(insertQuery, [], () => loadFormItems());
 };
 
@@ -62,6 +64,12 @@ export const FormScreen = (state = {}, action) => {
       return {
         ...state,
         description: action.description
+      }
+    }
+    case ON_ADD_PHOTO: {
+      return {
+        ...state,
+        photos: action.photos
       }
     }
     case LOAD_FORM_SCREEN: {

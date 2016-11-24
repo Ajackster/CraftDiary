@@ -11,7 +11,7 @@ class CreateFormContainer extends React.Component {
     this._onBackPress = this._onBackPress.bind(this);
   }
   _onSavePress() {
-    this.props.onEditSavePress();
+    this.props.onCreateSavePress();
     this.props.navigator.push({
       id: 'home'
     })

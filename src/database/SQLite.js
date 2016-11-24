@@ -27,7 +27,7 @@ export var db = SQLite.openDatabase(DB_NAME, DB_VERSION, DB_DISPLAY_NAME, DATABA
 // db.executeSql('DROP TABLE form_items');
 
 let populateDatabase = (db) => {
-  db.executeSql('CREATE TABLE IF NOT EXISTS form_items (id integer primary key, title text, description text, created date);');
+  db.executeSql('CREATE TABLE IF NOT EXISTS form_items (id integer primary key, title text, description text, created string);');
 };
 
 export const initDatabase = () => {

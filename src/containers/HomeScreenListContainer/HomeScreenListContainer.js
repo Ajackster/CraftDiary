@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { loadFormItems } from '../../redux/modules/HomeScreenList/HomeScreenList';
 import { loadFormScreen } from '../../redux/modules/Forms/FormScreenRedux';
@@ -10,7 +11,7 @@ class HomeScreenListContainer extends React.Component {
     this._onCreatePress = this._onCreatePress.bind(this);
     this._onFormItemPress = this._onFormItemPress.bind(this);
   }
-  componentWillMount() {
+  componentDidMount() {
     this.props.loadFormItems();
   }
   _onCreatePress() {
@@ -26,6 +27,8 @@ class HomeScreenListContainer extends React.Component {
   }
   render() {
     return (
+      this.props.loading ?
+      <View style={{ flex: 1, backgroundColor: '#FFF' }} /> :
       <FormList
         formItems={this.props.homeScreenList}
         onCreatePress={this._onCreatePress}
@@ -37,7 +40,8 @@ class HomeScreenListContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    homeScreenList: state.homeScreenList
+    homeScreenList: state.homeScreenList,
+    loading: state.loading
   }
 };
 
