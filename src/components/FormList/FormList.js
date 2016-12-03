@@ -59,6 +59,7 @@ const FormListBody = ({ formItems, onFormItemPress }) => {
             title={item.title}
             description={item.description}
             created={item.created}
+            image={item.image}
           />
         ))}
       </View>

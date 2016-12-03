@@ -53,14 +53,19 @@ class FormScreen extends React.Component {
     }).start();
   }
   _showImagePicker() {
-    ImagePicker.showImagePicker(options, (res) => {
-      const source = { uri: 'data:image/jpg;base64,' + res.data, isStatic: true };
-
-    })
+    try {
+      ImagePicker.showImagePicker((res) => {
+        console.log(res);
+        const source = {uri: 'data:image/jpg;base64,' + res.data, isStatic: true};
+      })
+    } catch(e) {
+      console.log(e);
+    }
   }
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: Colors.colorLightBackground }}>
+        <KeyboardAwareScrollView>
         <StatusBar barStyle="light-content" />
         <Animated.View style={[ styles.header, { height: this.state.headerHeight }]}>
           <Animated.View style={{ flex: 1, flexDirection: 'row', opacity: this.state.circleOpacity }}>
@@ -84,39 +89,38 @@ class FormScreen extends React.Component {
           </Animated.View>
           <View style={styles.bottomBar} />
         </Animated.View>
-        <KeyboardAwareScrollView>
-          <View style={styles.formScreenContainer}>
-            <View style={[ Core.shadow, { marginVertical: 15 } ]}>
-              <TextInput
-                placeholder="Enter a title"
-                style={styles.titleInput}
-                onChangeText={(text) => this.props.onTitleChange(text)}
-                onFocus={this._onInputFocus}
-                onBlur={this._onInputBlur}
-                underlineColorAndroid="rgba(0, 0, 0, 0)"
-                value={this.props.title}
-                blurOnSubmit
-                onSubmitEditing={() => this.refs['descriptionInput'].focus()}
-                returnKeyType="next"
-              />
-            </View>
-            <View style={[ Core.shadow, { marginBottom: 15 } ]}>
-              <TextInput
-                ref="descriptionInput"
-                placeholder="Enter a description"
-                multiline
-                style={styles.descriptionInput}
-                onChangeText={(text) => this.props.onDescriptionChange(text)}
-                onFocus={this._onInputFocus}
-                onBlur={this._onInputBlur}
-                underlineColorAndroid="rgba(0, 0, 0, 0)"
-                value={this.props.description}
-              />
-            </View>
+        <View style={styles.formScreenContainer}>
+          <View style={[ Core.shadow, { marginVertical: 15 } ]}>
+            <TextInput
+              placeholder="Enter a title"
+              style={styles.titleInput}
+              onChangeText={(text) => this.props.onTitleChange(text)}
+              onFocus={this._onInputFocus}
+              onBlur={this._onInputBlur}
+              underlineColorAndroid="rgba(0, 0, 0, 0)"
+              value={this.props.title}
+              blurOnSubmit
+              onSubmitEditing={() => this.refs['descriptionInput'].focus()}
+              returnKeyType="next"
+            />
           </View>
+          <View style={[ Core.shadow, { marginBottom: 15 } ]}>
+            <TextInput
+              ref="descriptionInput"
+              placeholder="Enter a description"
+              multiline
+              style={styles.descriptionInput}
+              onChangeText={(text) => this.props.onDescriptionChange(text)}
+              onFocus={this._onInputFocus}
+              onBlur={this._onInputBlur}
+              underlineColorAndroid="rgba(0, 0, 0, 0)"
+              value={this.props.description}
+            />
+          </View>
+        </View>
         </KeyboardAwareScrollView>
-        <Touchable>
-          <View>
+        <Touchable onPress={this._showImagePicker}>
+          <View style={{ width: 30, height: 30, backgroundColor: 'orange' }}>
 
           </View>
         </Touchable>
