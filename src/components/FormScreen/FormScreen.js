@@ -55,8 +55,9 @@ class FormScreen extends React.Component {
   _showImagePicker() {
     try {
       ImagePicker.showImagePicker((res) => {
-        const source = { source: res.uri };
-        this.props.onAddImage(source);
+        if (res.uri) {
+          this.props.onAddImage(res.uri);
+        }
       })
     } catch(e) {
       console.log(e);
@@ -123,7 +124,7 @@ class FormScreen extends React.Component {
             return (
               <Image
                 key={i}
-                source={{ uri: item.source }}
+                source={{ uri: item }}
                 style={{ height: 70, width: 70 }}
               />
             )

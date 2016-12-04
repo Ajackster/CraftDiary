@@ -14,9 +14,10 @@ export const addFormItem = (title, description, images) => {
   const getIdQuery = `SELECT id FROM form_items WHERE created = "${utc}";`;
   db.executeSql(insertQuery, [], () => {
     db.executeSql(getIdQuery, [], (res) => {
-      let itemId = res.rows.item(0);
+      let itemId = res.rows.item(0).id;
+      console.log(itemId);
       for (var i = 0; i < images.length; i++) {
-        db.executeSql(`INSERT INTO form_item_images (formId, source) VALUES ("${itemId}", "${images[i]}";`)
+        db.executeSql(`INSERT INTO form_item_images (formId, source) VALUES ("${itemId}", "${images[i]}");`)
       }
       loadFormItems();
     })

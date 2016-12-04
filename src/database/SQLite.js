@@ -24,7 +24,7 @@ let closeCallBack = () => {
 export var db = SQLite.openDatabase(DB_NAME, DB_VERSION, DB_DISPLAY_NAME, DATABASE_SIZE, openCallBack, errorCallBack);
 
 // Uncomment to clear table
-// db.executeSql('DROP TABLE form_items');
+// db.executeSql('DROP TABLE form_items'); db.executeSql('DROP TABLE form_item_images');
 
 let populateDatabase = (db) => {
   db.executeSql('CREATE TABLE IF NOT EXISTS form_items (id integer primary key, title text, description text, created string);');
