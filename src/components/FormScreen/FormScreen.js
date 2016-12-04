@@ -55,8 +55,8 @@ class FormScreen extends React.Component {
   _showImagePicker() {
     try {
       ImagePicker.showImagePicker((res) => {
-        console.log(res);
-        const source = {uri: 'data:image/jpg;base64,' + res.data, isStatic: true};
+        const source = { source: res.uri };
+        this.props.onAddImage(source);
       })
     } catch(e) {
       console.log(e);
@@ -117,6 +117,17 @@ class FormScreen extends React.Component {
               value={this.props.description}
             />
           </View>
+        </View>
+        <View style={{ alignSelf: 'stretch', backgroundColor: 'blue' }}>
+          {this.props.images.map((item, i) => {
+            return (
+              <Image
+                key={i}
+                source={{ uri: item.source }}
+                style={{ height: 70, width: 70 }}
+              />
+            )
+          })}
         </View>
         </KeyboardAwareScrollView>
         <Touchable onPress={this._showImagePicker}>
@@ -188,6 +199,7 @@ FormScreen.propTypes = {
   onDescriptionChange: React.PropTypes.func,
   onBackPress: React.PropTypes.func,
   onSavePress: React.PropTypes.func,
+  onAddImage: React.PropTypes.func,
   title: React.PropTypes.string,
   description: React.PropTypes.string
 };

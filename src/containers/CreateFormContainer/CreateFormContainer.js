@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { onTitleChange, onDescriptionChange, onCreateSavePress } from '../../redux/modules/Forms/FormScreenRedux';
+import { onTitleChange, onDescriptionChange, onCreateSavePress, onAddImage } from '../../redux/modules/Forms/FormScreenRedux';
 import FormScreen from '../../components/FormScreen';
 
 class CreateFormContainer extends React.Component {
@@ -24,8 +24,12 @@ class CreateFormContainer extends React.Component {
       <FormScreen
         onTitleChange={this.props.onTitleChange}
         onDescriptionChange={this.props.onDescriptionChange}
+        onAddImage={this.props.onAddImage}
         onSavePress={this._onSavePress}
         onBackPress={this._onBackPress}
+        title={this.props.formScreen.title}
+        description={this.props.formScreen.description}
+        images={this.props.formScreen.images}
       />
     )
   }
@@ -41,7 +45,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators ({
     onTitleChange: onTitleChange,
     onDescriptionChange: onDescriptionChange,
-    onCreateSavePress: onCreateSavePress
+    onCreateSavePress: onCreateSavePress,
+    onAddImage: onAddImage
   }, dispatch)
 };
 

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { FormScreen } from './modules/Forms/FormScreenRedux';
-import { HomeScreenList } from './modules/HomeScreenList/HomeScreenList';
+import { HomeScreenList } from './modules/HomeScreenList/HomeScreenListRedux';
 import { Loading } from './modules/Loading/Loading'
 
 const reducers = combineReducers ({

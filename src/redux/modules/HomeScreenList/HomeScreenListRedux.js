@@ -10,7 +10,7 @@ export const loadFormItems = (dispatch) => {
       for (var i = 0; i < res.rows.length; i++) {
         let img = [];
         for (var j = 0; i < imgResponse.rows.length; j++) {
-          if (imgResponse.rows.item(i).id === res.rows.item(i).id) {
+          if (imgResponse.rows.item(i).formId === res.rows.item(i).id) {
             img = [...img, imgResponse.rows.item(i)]
           }
         }

@@ -24,10 +24,12 @@ class EditFormContainer extends React.Component {
       <FormScreen
         onTitleChange={this.props.onTitleChange}
         onDescriptionChange={this.props.onDescriptionChange}
+        onAddImage={this.props.onAddImage}
         onSavePress={this._onSavePress}
         onBackPress={this._onBackPress}
         title={this.props.formScreen.title}
         description={this.props.formScreen.description}
+        images={this.props.formScreen.images}
       />
     )
   }

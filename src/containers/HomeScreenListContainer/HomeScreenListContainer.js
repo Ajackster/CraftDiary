@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { loadFormItems } from '../../redux/modules/HomeScreenList/HomeScreenList';
+import { loadFormItems } from '../../redux/modules/HomeScreenList/HomeScreenListRedux';
 import { loadFormScreen } from '../../redux/modules/Forms/FormScreenRedux';
 import FormList from '../../components/FormList';
 
